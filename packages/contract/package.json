@@ -1,0 +1,11 @@
+{
+  "name": "@foo-api/contract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/contract.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC"
+}

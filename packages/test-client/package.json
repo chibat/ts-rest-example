@@ -1,0 +1,11 @@
+{
+  "name": "@foo-api/test-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "ts-node client.ts"
+  },
+  "author": "",
+  "license": "ISC"
+}
