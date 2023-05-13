@@ -8,16 +8,12 @@
 ## Procedure
 
 ```
-$ sudo service docker start
-$ docker run --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
-
 $ npm install
 $ cd packages/contract
 $ npm run build
 $ cd -
 
 $ cd packages/server
-$ npx prisma migrate dev --name init
 $ npm start dev
 ```
 
