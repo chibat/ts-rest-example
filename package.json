@@ -6,6 +6,10 @@
     "packages/server",
     "packages/test-client"
   ],
+  "scripts":  {
+    "build": "cd packages/contract && npm run build && cd ../server && npm run build",
+    "build-image": "docker build -t ts-rest-example ."
+  },
   "dependencies": {
     "@ts-rest/core": "^3.19.5",
     "zod": "^3.21.4"
