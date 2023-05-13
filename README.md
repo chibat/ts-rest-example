@@ -3,7 +3,6 @@
 ## Prerequisites
 
 - Node.js v18
-- Docker
 
 ## Procedure
 
@@ -12,7 +11,9 @@ $ npm install
 $ cd packages/contract
 $ npm run build
 $ cd -
+```
 
+```
 $ cd packages/server
 $ npm start dev
 ```
