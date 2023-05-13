@@ -7,7 +7,6 @@ export interface Post {
   description: string | null;
   content: string | null;
   published: boolean;
-  tags: string[];
 }
 
 const PostSchema = z.object({
@@ -16,7 +15,6 @@ const PostSchema = z.object({
   description: z.string().nullable(),
   content: z.string().nullable(),
   published: z.boolean(),
-  tags: z.array(z.string()),
 });
 
 const c = initContract();

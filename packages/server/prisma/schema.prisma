@@ -1,23 +1,23 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
+//  url      = "file:./dev.db"
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = "postgres://postgres:postgres@localhost:5432/postgres"
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model Post {
   id          String   @id @default(cuid())
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  title       String   @db.VarChar(255)
+  title       String
   content     String?
   description String?
   published   Boolean  @default(false)
-  tags        String[]
   image       String?
 }
