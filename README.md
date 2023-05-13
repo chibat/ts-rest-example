@@ -25,13 +25,13 @@ $ npm start dev
 cd packages/test-client
 $ npm run client
 
-> client@1.0.0 client
+> @foo-api/test-client@1.0.0 client
 > ts-node client.ts
 
 {
-  id: 'clhgbp42n0002udpqalidv9dm',
-  createdAt: '2023-05-09T13:44:11.940Z',
-  updatedAt: '2023-05-09T13:44:11.940Z',
+  id: 'clhl7i11u0000ud38s7nadq31',
+  createdAt: '2023-05-12T23:45:33.906Z',
+  updatedAt: '2023-05-12T23:45:33.906Z',
   title: 'Post Title',
   content: 'Post Content',
   description: null,
