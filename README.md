@@ -50,4 +50,5 @@ http://localhost:3000/api-json
 http://localhost:3000/health
 
 ## TODO
-[ ] Authentication
+- [ ] Authentication
+- [ ] Logging

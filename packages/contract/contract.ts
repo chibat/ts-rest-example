@@ -22,7 +22,7 @@ const c = initContract();
 export const contract = c.router({
   createPost: {
     method: 'POST',
-    path: '/posts',
+    path: '/api/posts',
     responses: {
       201: PostSchema,
     },
@@ -36,7 +36,7 @@ export const contract = c.router({
   },
   updatePost: {
     method: 'PATCH',
-    path: `/posts/:id`,
+    path: `/api/posts/:id`,
     responses: { 200: PostSchema },
     body: z.object({
       title: z.string().optional(),
@@ -48,7 +48,7 @@ export const contract = c.router({
   },
   deletePost: {
     method: 'DELETE',
-    path: `/posts/:id`,
+    path: `/api/posts/:id`,
     responses: {
       200: z.object({ message: z.string() }),
       404: z.object({ message: z.string() }),
@@ -58,7 +58,7 @@ export const contract = c.router({
   },
   getPost: {
     method: 'GET',
-    path: `/posts/:id`,
+    path: `/api/posts/:id`,
     responses: {
       200: PostSchema,
       404: z.null(),
@@ -68,7 +68,7 @@ export const contract = c.router({
   },
   getPosts: {
     method: 'GET',
-    path: '/posts',
+    path: '/api/posts',
     responses: {
       200: z.object({
         posts: PostSchema.array(),
@@ -86,7 +86,7 @@ export const contract = c.router({
   },
   testPathParams: {
     method: 'GET',
-    path: '/test/:id/:name',
+    path: '/api/test/:id/:name',
     pathParams: z.object({
       id: z.string().transform(Number),
     }),
