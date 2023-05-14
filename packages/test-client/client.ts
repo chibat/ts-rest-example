@@ -1,9 +1,10 @@
 import { initClient } from "@ts-rest/core";
 import { contract } from "@foo-api/contract";
 
+const auth = Buffer.from("user:pass").toString("base64");
 const client = initClient(contract, {
   baseUrl: "http://localhost:3000",
-  baseHeaders: {},
+  baseHeaders: { "Authorization": `Basic ${auth}` },
 });
 
 client.createPost({

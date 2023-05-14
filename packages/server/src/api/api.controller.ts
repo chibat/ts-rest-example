@@ -1,13 +1,14 @@
-import { Controller } from '@nestjs/common';
-import { contract } from '@foo-api/contract';
+import { Controller, UseGuards } from "@nestjs/common";
+import { contract } from "@foo-api/contract";
 import {
   nestControllerContract,
   NestControllerInterface,
   NestRequestShapes,
   TsRest,
   TsRestRequest,
-} from '@ts-rest/nest';
-import { ApiService } from './api.service';
+} from "@ts-rest/nest";
+import { ApiService } from "./api.service";
+import { AuthGuard } from "@nestjs/passport";
 
 const c = nestControllerContract(contract);
 type RequestShapes = NestRequestShapes<typeof c>;
@@ -18,9 +19,10 @@ export class ApiController implements NestControllerInterface<typeof c> {
   constructor(private readonly apiService: ApiService) {}
 
   @TsRest(c.getPosts)
+  @UseGuards(AuthGuard("basic"))
   async getPosts(
-    @TsRestRequest()
-    { query: { take, skip, search } }: RequestShapes['getPosts']
+    @TsRestRequest() { query: { take, skip, search } }:
+      RequestShapes["getPosts"],
   ) {
     const { posts, totalPosts } = await this.apiService.getPosts({
       take,
@@ -35,7 +37,8 @@ export class ApiController implements NestControllerInterface<typeof c> {
   }
 
   @TsRest(c.getPost)
-  async getPost(@TsRestRequest() { params: { id } }: RequestShapes['getPost']) {
+  @UseGuards(AuthGuard("basic"))
+  async getPost(@TsRestRequest() { params: { id } }: RequestShapes["getPost"]) {
     const post = await this.apiService.getPost(id);
 
     if (!post) {
@@ -46,7 +49,8 @@ export class ApiController implements NestControllerInterface<typeof c> {
   }
 
   @TsRest(c.createPost)
-  async createPost(@TsRestRequest() { body }: RequestShapes['createPost']) {
+  @UseGuards(AuthGuard("basic"))
+  async createPost(@TsRestRequest() { body }: RequestShapes["createPost"]) {
     const post = await this.apiService.createPost({
       title: body.title,
       content: body.content,
@@ -58,8 +62,9 @@ export class ApiController implements NestControllerInterface<typeof c> {
   }
 
   @TsRest(c.updatePost)
+  @UseGuards(AuthGuard("basic"))
   async updatePost(
-    @TsRestRequest() { params: { id }, body }: RequestShapes['updatePost']
+    @TsRestRequest() { params: { id }, body }: RequestShapes["updatePost"],
   ) {
     const post = await this.apiService.updatePost(id, {
       title: body.title,
@@ -72,17 +77,19 @@ export class ApiController implements NestControllerInterface<typeof c> {
   }
 
   @TsRest(c.deletePost)
+  @UseGuards(AuthGuard("basic"))
   async deletePost(
-    @TsRestRequest() { params: { id } }: RequestShapes['deletePost']
+    @TsRestRequest() { params: { id } }: RequestShapes["deletePost"],
   ) {
     await this.apiService.deletePost(id);
 
-    return { status: 200 as const, body: { message: 'Post Deleted' } };
+    return { status: 200 as const, body: { message: "Post Deleted" } };
   }
 
   @TsRest(c.testPathParams)
+  @UseGuards(AuthGuard("basic"))
   async testPathParams(
-    @TsRestRequest() { params }: RequestShapes['testPathParams']
+    @TsRestRequest() { params }: RequestShapes["testPathParams"],
   ) {
     return { status: 200 as const, body: params };
   }

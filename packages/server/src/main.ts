@@ -15,6 +15,10 @@ async function bootstrap() {
   }, {
     setOperationId: true,
   });
+  document.components = {
+    securitySchemes: { basicAuth: { type: "http", scheme: "basic" } },
+  };
+  document.security = [{ "basicAuth": [] }];
 
   SwaggerModule.setup("api", app, document);
   //                   ^ Path for swagger

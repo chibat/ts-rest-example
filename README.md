@@ -1,5 +1,12 @@
 # ts-rest example
 
+## Feature
+
+- ts-rest
+- OpenAPI Spec response
+- Swagger-UI
+- Basic Authentication
+
 ## Prerequisites
 
 - Node.js v18
@@ -50,5 +57,16 @@ http://localhost:3000/api-json
 http://localhost:3000/health
 
 ## TODO
-- [ ] Authentication
+
+- [x] Authentication
 - [ ] Logging
+
+## Reference
+
+- Basic Authentication:
+  https://www.stewright.me/2021/03/add-basic-auth-to-nestjs-rest-api/
+
+const document = generateOpenApi(contract, { info: { title: "Posts API",
+version: "1.0.0", }, }, { setOperationId: true, }); document.components = {
+securitySchemes: { basicAuth: { type: "http", scheme: "basic" } }, };
+document.security = [{ "basicAuth": [] }];

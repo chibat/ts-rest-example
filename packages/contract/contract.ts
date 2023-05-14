@@ -1,5 +1,5 @@
-import { initContract } from '@ts-rest/core';
-import { z } from 'zod';
+import { initContract } from "@ts-rest/core";
+import { z } from "zod";
 
 export interface Post {
   id: string;
@@ -21,8 +21,8 @@ const c = initContract();
 
 export const contract = c.router({
   createPost: {
-    method: 'POST',
-    path: '/api/posts',
+    method: "POST",
+    path: "/api/posts",
     responses: {
       201: PostSchema,
     },
@@ -32,10 +32,10 @@ export const contract = c.router({
       published: z.boolean().optional(),
       description: z.string().optional(),
     }),
-    summary: 'Create a post',
+    summary: "Create a post",
   },
   updatePost: {
-    method: 'PATCH',
+    method: "PATCH",
     path: `/api/posts/:id`,
     responses: { 200: PostSchema },
     body: z.object({
@@ -44,31 +44,31 @@ export const contract = c.router({
       published: z.boolean().optional(),
       description: z.string().optional(),
     }),
-    summary: 'Update a post',
+    summary: "Update a post",
   },
   deletePost: {
-    method: 'DELETE',
+    method: "DELETE",
     path: `/api/posts/:id`,
     responses: {
       200: z.object({ message: z.string() }),
       404: z.object({ message: z.string() }),
     },
     body: null,
-    summary: 'Delete a post',
+    summary: "Delete a post",
   },
   getPost: {
-    method: 'GET',
+    method: "GET",
     path: `/api/posts/:id`,
     responses: {
       200: PostSchema,
       404: z.null(),
     },
     query: null,
-    summary: 'Get a post by id',
+    summary: "Get a post by id",
   },
   getPosts: {
-    method: 'GET',
-    path: '/api/posts',
+    method: "GET",
+    path: "/api/posts",
     responses: {
       200: z.object({
         posts: PostSchema.array(),
@@ -82,11 +82,11 @@ export const contract = c.router({
       skip: z.string().transform(Number),
       search: z.string().optional(),
     }),
-    summary: 'Get all posts',
+    summary: "Get all posts",
   },
   testPathParams: {
-    method: 'GET',
-    path: '/api/test/:id/:name',
+    method: "GET",
+    path: "/api/test/:id/:name",
     pathParams: z.object({
       id: z.string().transform(Number),
     }),
@@ -97,7 +97,7 @@ export const contract = c.router({
       200: z.object({
         id: z.number().lt(1000),
         name: z.string(),
-        defaultValue: z.string().default('hello world'),
+        defaultValue: z.string().default("hello world"),
       }),
     },
   },
