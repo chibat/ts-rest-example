@@ -6,6 +6,7 @@
 - OpenAPI Spec response
 - Swagger-UI
 - Basic Authentication
+- Healthcheck
 
 ## Prerequisites
 
