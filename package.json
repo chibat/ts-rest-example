@@ -9,7 +9,8 @@
   "scripts":  {
     "start": "cd packages/server && npm run start:dev",
     "build": "cd packages/contract && npm run build && cd ../server && npm run build",
-    "build-image": "docker build -t ts-rest-example ."
+    "docker-build": "docker build -t ts-rest-example .",
+    "docker-run": "docker run --name ts-rest-example -p 3000:3000 -d ts-rest-example"
   },
   "dependencies": {
     "@ts-rest/core": "^3.19.5",
