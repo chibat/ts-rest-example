@@ -65,8 +65,3 @@ http://localhost:3000/health
 
 - Basic Authentication:
   https://www.stewright.me/2021/03/add-basic-auth-to-nestjs-rest-api/
-
-const document = generateOpenApi(contract, { info: { title: "Posts API",
-version: "1.0.0", }, }, { setOperationId: true, }); document.components = {
-securitySchemes: { basicAuth: { type: "http", scheme: "basic" } }, };
-document.security = [{ "basicAuth": [] }];
