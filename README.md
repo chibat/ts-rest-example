@@ -14,8 +14,7 @@ $ cd -
 ```
 
 ```
-$ cd packages/server
-$ npm start dev
+$ npm start
 ```
 
 ```
@@ -37,3 +36,18 @@ $ npm run client
   image: null
 }
 ```
+
+## Swagger-UI
+
+http://localhost:3000/api
+
+## OpenAPI Spec response
+
+http://localhost:3000/api-json
+
+## healthcheck
+
+http://localhost:3000/health
+
+## TODO
+[ ] Authentication
