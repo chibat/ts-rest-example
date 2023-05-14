@@ -1,12 +1,15 @@
 # ts-rest example
 
-## Feature
+## Features
 
 - ts-rest
-- OpenAPI Spec response
+- OpenAPI Spec endpoint
 - Swagger-UI
 - Basic Authentication
-- Healthcheck
+- Healthcheck endpoint
+- Logging logstash format
+- Logging daily rotate(Option)
+- Error email(Option)
 
 ## Prerequisites
 
