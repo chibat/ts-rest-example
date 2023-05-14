@@ -1,7 +1,7 @@
 # Base image
 FROM node:18-slim
 RUN apt update
-RUN apt install -y curl
+RUN apt install -y tini curl
 
 # Create app directory
 WORKDIR /app
@@ -21,8 +21,10 @@ COPY --chown=node:node . .
 # Creates a "dist" folder with the production build
 RUN npm run build
 
+ENV NODE_ENV production
 ENV DATABASE_URL file:./dev.db
 
 # Start the server using the production build
 USER node
+ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD [ "node", "packages/server/dist/main.js" ]
